@@ -7,11 +7,11 @@
             <div class="col-xs-6">
               <!-- On récupère l'url de la photo -->
               <!-- On crée la card-->
-              <div class="card" style="background-image: url('<%= cl_image_path restaurant.photo.path, height: 300, width:400, crop: :fill %>')">
+              <!--  -->
                 <div class="card-description">
                   <h2><%= restaurant.name %></h2>
-                    <p><%= restautant.description %></p>
-                    <p><%= restaurant.rating %></p>
+                    <p><%= restaurant.address %></p>
+                    <p><%= restaurant.average_rating %></p>
                 </div>
                 <%= link_to " ", restaurant_path(restaurant), class: 'card-link' %>
               </div>

@@ -7,10 +7,10 @@ class RestaurantsController < ApplicationController
 
   def show
     @booking = Booking.new
-    # @hash = Gmaps4rails.build_markers(@cow) do |cow, marker|
-    #   marker.lat cow.latitude
-    #   marker.lng cow.longitude
-    #   marker.infowindow render_to_string(partial: "pages/cow_map_box", locals: { cow: cow })
+    # @hash = Gmaps4rails.build_markers(@restaurant) do |restaurant, marker|
+    #   marker.lat restaurant.latitude
+    #   marker.lng restaurant.longitude
+    #   marker.infowindow render_to_string(partial: "pages/restaurant_map_box", locals: { restaurant: restaurant })
     # end
   end
 
@@ -35,7 +35,7 @@ class RestaurantsController < ApplicationController
    end
 
    def restaurants_params
-    params.require(:restaurant).permit(:name, :description, :chef, :rating)
+    params.require(:restaurant).permit(:name, :description, :chef, :average_rating, :phone)
    end
 
 end

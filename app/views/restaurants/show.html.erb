@@ -1,0 +1,16 @@
+<div class="padded">
+  <div class="container media">
+    <div class="row" class="media-body">
+      <div class="col-xs-8 col-sm-8">
+        <div class="restaurant-name">
+            <h2><%= @restaurant.name %></h4>
+            <h4><%= @restaurant.chef %></h4>
+            <p><%= @restaurant.description %></p>
+            <p><%= @restaurant.address %></p>
+            <p><%= @restaurant.phone %></p>
+            <p><%= @restaurant.average_rating %></p>
+            <%= link_to "Back", restaurants_path %>
+        </div>
+      </div>
+    </div>
+</div>
