@@ -1,31 +1,10 @@
-<div class="text-center padded">
-  <div class="container">
+  <div class="col-xs-3 col-sm-3">
     <div class="row">
-      <div class="col-xs-8 col-sm-8">
-        <div class="row">
           <% @restaurants.each do |restaurant| %>
-            <div class="col-xs-6">
-              <!-- On récupère l'url de la photo -->
-              <!-- On crée la card-->
-              <!--  -->
-                <div class="card-description">
                   <h2><%= restaurant.name %></h2>
                     <p><%= restaurant.address %></p>
-                    <p><%= restaurant.average_rating %></p>
-                </div>
-                <%= link_to " ", restaurant_path(restaurant), class: 'card-link' %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <!-- <div class="col-xs-4">
-        <div class="position-fixed">
-          <h3 class="text-center" style="color: #0060BF;"></h3>
-          <div id="map" style="width: 400px; height: 500px;"></div>
-        </div>
-      </div>
+                    <p><%= restaurant.average_rating%><i class="fa fa-star"></i></p>
+                    <%= link_to " ", restaurant_path(restaurant), class: 'card-link' %>
+      <% end %>
     </div>
-  </div> -->
-</div>
-
+  </div>
