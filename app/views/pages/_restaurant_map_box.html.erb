@@ -1,0 +1,8 @@
+<div class="map_box">
+  <h4><%= restaurant.name %></h4>
+  <p><%= restaurant.address %></p>
+  <p>Tel: <%= restaurant.phone %></p>
+  <%= link_to 'Réserver', restaurant_path(restaurant), method: :post, class: "btn btn-map" %>
+</div>
+
+

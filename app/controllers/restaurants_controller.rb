@@ -7,11 +7,11 @@ class RestaurantsController < ApplicationController
 
   def show
     @booking = Booking.new
-    # @hash = Gmaps4rails.build_markers(@restaurant) do |restaurant, marker|
-    #   marker.lat restaurant.latitude
-    #   marker.lng restaurant.longitude
-    #   marker.infowindow render_to_string(partial: "pages/restaurant_map_box", locals: { restaurant: restaurant })
-    # end
+    @hash = Gmaps4rails.build_markers(@restaurant) do |restaurant, marker|
+      marker.lat restaurant.latitude
+      marker.lng restaurant.longitude
+      marker.infowindow render_to_string(partial: "pages/restaurant_map_box", locals: { restaurant: restaurant })
+    end
   end
 
   def new
