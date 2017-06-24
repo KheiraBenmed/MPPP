@@ -1,8 +1,26 @@
 class RestaurantsController < ApplicationController
- before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+ before_action :set_restaurant, only: [:show, :edit, :update, :destroy ]
+
+  def new
+    @restaurant = Restaurant.new
+  end
 
   def index
-    @restaurants = Restaurant.all
+    if params[:search] && params[:search] != ""
+      @restaurants = Restaurant.near(params[:search],2)
+    else
+    @restaurants = Restaurant.where.not(latitude: nil, longitude: nil)
+  end
+    @hash = Gmaps4rails.build_markers(@restaurants) do |restaurant, marker|
+      marker.lat restaurant.latitude
+      marker.lng restaurant.longitude
+      # marker.picture({
+      #   url: ActionController::Base.helpers.image_path('logo.png'),
+      #   width:  30,
+      #   height: 30
+      # })
+      marker.infowindow render_to_string(partial: "pages/restaurant_map_box", locals: { restaurant: restaurant })
+    end
   end
 
   def show
@@ -35,7 +53,7 @@ class RestaurantsController < ApplicationController
    end
 
    def restaurants_params
-    params.require(:restaurant).permit(:name, :description, :chef, :average_rating, :phone)
+    params.require(:restaurant).permit(:name, :description, :address, :zip, :city, :chef, :average_rating, :phone)
    end
 
 end
