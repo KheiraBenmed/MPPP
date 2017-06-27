@@ -14,11 +14,12 @@ class RestaurantsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@restaurants) do |restaurant, marker|
       marker.lat restaurant.latitude
       marker.lng restaurant.longitude
-      # marker.picture({
-      #   url: ActionController::Base.helpers.image_path('logo.png'),
-      #   width:  30,
-      #   height: 30
-      # })
+      marker.json({id: restaurant.id})
+      marker.picture({
+        url: ActionController::Base.helpers.image_path('mark.png'),
+        width:  50,
+        height: 50
+      })
       marker.infowindow render_to_string(partial: "pages/restaurant_map_box", locals: { restaurant: restaurant })
     end
   end
