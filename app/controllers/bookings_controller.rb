@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.status = "accepted"
     if @booking.save
-      redirect_to user_path(@booking.restaurant.user) #page profil user @booking.restaurant.user pour proprio restaurant, sinon @booking.user = mangeur
+      redirect_to user_path(@booking.user) #page profil user @booking.restaurant.user pour proprio restaurant, sinon @booking.user = mangeur
     end
   end
 
@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.status = "declined"
     if @booking.save
-      redirect_to user_path(@booking.restaurant.user) #page profil user @booking.restaurant.user pour proprio restaurant, sinon @booking.user = mangeur
+      redirect_to user_path(@booking.user) #page profil user @booking.restaurant.user pour proprio restaurant, sinon @booking.user = mangeur
     end
   end
 

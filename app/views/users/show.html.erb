@@ -3,20 +3,15 @@
     <div class="col-xs-12">
       <div id="profile-claire">
 
-        <div id="profile-picture avatar-claire">
-          <% if @user.photo %>
-            <%= cl_image_tag @user.photo.path, height: 90, width: 90, crop: :thumb, gravity: :face, radius: 50 %>
-          <% end %>
-       </div>
-
+      <!-- if user photo -->
         <div id="profile-name" class="text-center">
           <%= @user.first_name %> <%= @user.last_name %>
         </div>
 
         <div id="metrics">
-          <div id="metrics-cow">
+          <div id="metrics-restaurant">
             <%= image_tag "logo.png", {class: "img-circle", style: "height: 30px"} %>
-            <p><%= @user.cows.count %> cows</p>
+            <p><%= @user.restaurants.count %> restaurants</p>
           </div>
 
           <div id="metrics-bookings">
@@ -42,7 +37,7 @@
 
 <div class="container_eleo">
 
-  <!--   partie bookings des cows -->
+  <!--   partie bookings des restaurants -->
   <% if @user.bookings.empty? %>
     <div class="my_bookings text-center">
       <%= image_tag "logo.png", {class: "img-circle", style: "height: 100px"}%>
@@ -57,8 +52,8 @@
       <div class="row">
         <% @user.bookings.each do |booking| %>
         <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-          <div class="container_cows">
-            <div class="my_cow" style="background-image: url('<%= cl_image_path booking.cow.photo.path %>')">
+          <div class="container_restaurants">
+            <div class="my_restaurant" style="background-image: url('<%= cl_image_path booking.restaurant.photo.path %>')">
               <h4><%= booking.restaurant.name %></h4>
                <h4><%= booking.restaurant.booking_date %></h4>
               <% if booking.status == "pending" %>
@@ -70,7 +65,7 @@
               <% end %>
             </div>
 
-            <div class="cow_booking">
+            <div class="restaurant_booking">
               <p>Vous fait une demande de reservation pour <strong><%= booking.restaurant.name %></strong> pour le  <%= booking.booking_date.to_formatted_s(:long) %></p>
             </div>
           </div>
@@ -80,32 +75,32 @@
     </div>
   <% end %>
 
-  <!-- partie des cows -->
+  <!-- partie des restaurants -->
   <% if @user.restaurant.empty? %>
     <div class="my_bookings text-center">
       <p>Vous n'avez aucune vache en location</p>
       <br>
-      <%= link_to "Ajouter une vache", new_cow_path, class: "btn-add-cow" %>
+      <%= link_to "Ajouter une vache", new_restaurant_path, class: "btn-add-restaurant" %>
     </div>
   <% else %>
   <div class="my_bookings text-center">
     <div class="title_booking text-left">
       <h3>Votre cohorte de vaches</h3>
-      <%= link_to "Ajouter une vache", new_cow_path, class: "btn-add-cow" %>
+      <%= link_to "Ajouter une vache", new_restaurant_path, class: "btn-add-restaurant" %>
     </div>
-    <% @user.cows.each do |cow| %>
+    <% @user.restaurants.each do |restaurant| %>
       <div class="row">
         <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-          <div class="container_cows">
-            <div class="my_cow" style="background-image: url('<%= cl_image_path cow.photo.path %>')">
-              <h4><%= cow.name %></h4>
+          <div class="container_restaurants">
+            <div class="my_restaurant" style="background-image: url('<%= cl_image_path restaurant.photo.path %>')">
+              <h4><%= restaurant.name %></h4>
             </div>
-            <div class="cow_booking">
-              <% if cow.bookings.empty? %>
+            <div class="restaurant_booking">
+              <% if restaurant.bookings.empty? %>
                 <p>Aucune réservation n'a été faite pour l'instant</p>
               <% else %>
                 <ul>
-                  <% cow.bookings.each do |booking| %>
+                  <% restaurant.bookings.each do |booking| %>
                   <li><strong><%= booking.status.upcase %></strong> <%= booking.user.first_name %> a fait une réservation du <%= booking.start_date.to_formatted_s(:long) %> au <%= booking.end_date.to_formatted_s(:long) %>
                     <div class="btn-resa">
                       <%= link_to accept_booking_path(booking), class: "btn-accept" do %>
