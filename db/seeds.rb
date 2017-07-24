@@ -19,6 +19,7 @@ restaurant1 = Restaurant.create(
   description: "Le grand chef aux vingt-huit restaurants dans le monde a retrouvé la troisième étoile perdue en 2015 pour cause de cuisine trop audacieuse marquée par la naturalité, l’absence de viandes rouges et la prépondérance affichée des poissons, des végétaux, des céréales conjugués à l’influence japonaise: légumes des jardins de Versailles et moutarde pilée, homard bleu, pommes de mer au four, turbot en écailles, tian et le caillé de brebis aux céréales et miel d’arbousier… Tout cela d’un dépouillement rigoureux servi dans un décor blanc et or, mobilier, luminaires, un espace de restauration inégalable à Paris. Une fête des sens qui se paie.
 ",
   chef: "Alain Ducasse",
+  # restaurant1.  photo_url = "http://www.critterbabies.com/wp-content/gallery/cow/c2.jpg",
   average_rating: 4
  )
 

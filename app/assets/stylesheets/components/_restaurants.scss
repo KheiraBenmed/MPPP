@@ -1,0 +1,22 @@
+.restaurant-finder__list__wrapper {
+    background-color: #f0f2f4;
+    overflow: scroll;
+    transition: all 0.3s ease-in-out;
+    z-index: 11px;
+}
+
+.paginated-list {
+    height: 100%;
+    background-color: #f0f2f4;
+    overflow-y: scroll;
+}
+
+.restaurant-finder__list__item {
+    // display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow-y: hidden;
+    height: 100%;
+}
