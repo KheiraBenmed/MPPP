@@ -1,54 +1,27 @@
-  <div class="span7 navigation">
-      <div class="navbar hidden-phone">
-        <ul class="nav">
-         <li class="dropdown">
-           <a class="dropdown-toggle" data-toggle="dropdown" href="index.htm">Home <b class="caret"></b></a>
-            <% if user_signed_in? %>
-          <ul class="dropdown-menu">
-                  <li><a href="#">Full Page</a></li>
-                  <li><a href="#">Gallery Only</a></li>
-                  <li><a href="#">Slider Only</a></li>
-                </ul>
-            </li>
-           <li><a href="#">Features</a></li>
-            <li class="dropdown active">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pages <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Full Width</a></li>
-                    <li><a href="#">Right Sidebar</a></li>
-                    <li><a href="#">Left Sidebar</a></li>
-                    <li><a href="#">Double Sidebar</a></li>
-                </ul>
-            </li>
-             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gallery <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Gallery 3 Column</a></li>
-                    <li><a href="#">Gallery 4 Column</a></li>
-                    <li><a href="#">Gallery 6 Column</a></li>
-                    <li><a href="#">Gallery 4 Round</a></li>
-                    <li><a href="#">Gallery Single</a></li>
-                </ul>
-             </li>
-             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Blog <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Blog Style 1</a></li>
-                    <li><a href="#">Blog Style 2</a></li>
-                    <li><a href="#">Blog Style 3</a></li>
-                    <li><a href="#">Blog Style 4</a></li>
-                    <li><a href="#">Blog Single</a></li>
-                </ul>
-             </li>
-             <li><a href="page-contact.htm">Contact</a></li>
-            </ul>
+<div class="navbar-wagon">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
 
-            </div>
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-          <% end %>
-        </div>
+    <!-- Different navigation if login or not -->
+    <% if user_signed_in? %>
+    <!-- Text link Profile and Log-out -->
+
+      <div id="navbar-links">
+      <%= link_to "RestO", restaurants_path %>
+      <%= link_to "Profil", user_path(current_user) %>
+      <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
+      </div>
+    <% else %>
+
+      <!-- Login text link -->
+      <div id= "navbar-links-login">
+      <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
  before_action :set_restaurant, only: [:show, :edit, :update, :destroy ]
-
+ skip_before_action :authenticate_user!, only: [:search, :show]
   def new
     @restaurant = Restaurant.new
   end
@@ -47,14 +47,38 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  # def search
+  #   @search = params[:search]
+  #   if params[:search] =! ""
+  #     @users = User.near("#{params[:search]}", 5)
+  #     @restaurants = find_restaurants_by_location(@users)
+  #   else
+  #     @restaurants = Restaurant.all
+  #     @users = User.all
+  # end
+
+  # def find_restaurants_by_location(users)
+  #   restaurants_array = []
+  #   user_restaurants_array = []
+  #   users.each do |user|
+  #     user.restaurants.each do |restaurant|
+  #       user_restaurants_array << restaurant
+  #     end
+  #   end
+  #   user_restaurants_array.each do |restaurant|
+  #     restaurants_array << restaurant
+  #   end
+  # return restaurants_array
+  #   end
+  # end
+
   private
 
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
-   end
+  end
 
-   def restaurants_params
+  def restaurants_params
     params.require(:restaurant).permit(:name, :description, :address, :zip, :city, :chef, :average_rating, :phone)
-   end
-
+  end
 end
