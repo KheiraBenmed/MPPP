@@ -13,4 +13,48 @@
         </div>
       </div>
     </div>
+    <div class="col-xs-4 col-sm-4">
+        <div class="card-top">
+          <h4 style ="color: white"><%= @restaurant.chef %></h4>
+        </div>
+        <div class="card-form">
+          <div class="text-center " id="form-container">
+            <%= simple_form_for [@restaurant, @booking] do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :booking_date, as: :datetime %>
+            </div>
+            <div>
+              <%= f.button :submit, class: "form-actions btn-book", value: "Réserver" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      <div class="col-xs-12 col-sm-12">
+    <div class="row">
+      <div id="map"></div>
+    </div>
+  </div>
 </div>
+
+
+<% content_for(:after_js) do %>
+  <script>
+  $(document).ready(function() {
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map' } }, function() {
+      provider: {
+        scrollwheel :false
+      }
+      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+      }
+    });
+  })
+</script>
+<% end %>

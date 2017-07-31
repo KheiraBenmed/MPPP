@@ -17,6 +17,17 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'geocoder'
+gem "coffee-rails"
+gem "gmaps4rails"
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   gem 'better_errors'

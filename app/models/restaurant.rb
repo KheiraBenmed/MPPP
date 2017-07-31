@@ -1,8 +1,8 @@
 class Restaurant < ApplicationRecord
-
+  belongs_to :users
+  has_many :bookings
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
-  has_many :bookings
   validates :name, presence: true
   # validates :chef, presence: true
   validates :address, presence: true
